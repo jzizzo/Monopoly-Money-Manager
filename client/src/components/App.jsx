@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Manager from './manager/Manager.jsx';
+import Nav from './nav/Nav.jsx'
 
 class App extends Component {
   constructor (props) {
@@ -8,7 +10,10 @@ class App extends Component {
   render() {
 
     return (
-      <div>Hello World!</div>
+      <div>
+        <Nav />
+        <Manager />
+      </div>
     )
   }
 }
