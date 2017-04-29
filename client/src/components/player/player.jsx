@@ -8,7 +8,7 @@ class Player extends Component {
   render() {
 
     return (
-      <div> A player </div>
+      <div onClick={() => (this.props.displayTransfer(this.props.playerId))}> Player: {this.props.playerId} </div>
     )
   }
 }
