@@ -24,9 +24,8 @@ class Player extends Component {
 
     return (
       <div>
-        <div onClick={() => (this.props.displayTransfer(this.props.playerId))}> Player: {this.props.playerId} <br /> Balance: {this.state.balance}
+        <div onClick={() => (this.props.displayTransfer(this.props.playerId))}> Player: {this.props.playerId}
         </div>
-          <button>bank</button>
           <button>hat</button>
           <button>trex</button>
           <input

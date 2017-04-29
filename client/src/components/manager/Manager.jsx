@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+import Bank from '../player/Bank.jsx'
 import Player from '../player/Player.jsx'
 
 
 class Manager extends Component {
   constructor(props) {
-    super(props)
+    super(props);
+    this.state = {
+      players: ['hat', 'trex']
+    }
   this.displayTransfer = this.displayTransfer.bind(this);
   }
 
