@@ -21,11 +21,18 @@ class Player extends Component {
     }
   }
 
+  displayTransfers(player) {
+    console.log(player, this.props.players.filter( (currentPlayer) => { if (player !== currentPlayer.token) { return currentPlayer }} ))
+  }
+
   render() {
+    {console.log}
 
     return (
       <div>
-        <div onClick={() => (this.props.displayBalance(this.props.playerId))}> Player: {this.props.player.id} Balance: ${this.props.player.balance} <br />
+        <div onClick={() => (this.displayTransfers(this.props.player.token))}> Player: {this.props.player.token}
+        </div>
+          <div> Balance: ${this.props.player.balance} <br />
         </div>
 
       </div>

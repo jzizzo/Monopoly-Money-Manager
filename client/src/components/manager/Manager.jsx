@@ -9,12 +9,9 @@ class Manager extends Component {
     this.state = {
 
     }
-  this.displayBalance = this.displayBalance.bind(this);
   }
 
-  displayBalance(player) {
-    console.log('hiii', this.props.data, player);
-  }
+
 
   render() {
     return (
@@ -24,7 +21,7 @@ class Manager extends Component {
         <br />
 
         { this.props.data.map((playerData, key) => {
-          return <Player player={playerData} key={key} displayBalance={this.displayBalance} />
+          return <Player player={playerData} players={this.props.data} key={key} />
         })
       }
       </div>
