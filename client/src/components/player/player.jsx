@@ -4,9 +4,9 @@ class Player extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      player: this.props.player.token,
       value: 'Transfer fund$',
-      transfer: undefined,
-      showBalance: false
+      showTransferOptions: false
     }
     this.handleChange = this.handleChange.bind(this);
   }
@@ -21,20 +21,28 @@ class Player extends Component {
     }
   }
 
-  displayTransfers(player) {
-    console.log(player, this.props.players.filter( (currentPlayer) => { if (player !== currentPlayer.token) { return currentPlayer }} ))
+  toggleTransferOptions() {
+    this.setState({showTransferOptions: !this.state.showTransferOptions})
+  }
+
+  displayTransferOptions() {
+    return this.props.players.filter( (currentPlayer) => {
+           if (this.state.player !== currentPlayer.token) {
+            return currentPlayer}}
+             )
+          .map( (player, key) => { return <div onClick={this.someFnThatWillReturnInputForm}key={key}>{player.token}</div>})
   }
 
   render() {
-    {console.log}
 
     return (
       <div>
-        <div onClick={() => (this.displayTransfers(this.props.player.token))}> Player: {this.props.player.token}
+        <div onClick={ this.toggleTransferOptions.bind(this) }> Player: { this.props.player.token }
         </div>
-          <div> Balance: ${this.props.player.balance} <br />
-        </div>
-
+          <div> Balance: ${ this.props.player.balance }
+          { this.state.showTransferOptions ? this.displayTransferOptions() : null }
+          </div>
+          <br /> <br />
       </div>
     )
   }
