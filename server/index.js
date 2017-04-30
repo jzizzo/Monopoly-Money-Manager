@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser')
 var app = express();
+var db = require('../db/index.js')
 
 var data = [{
   id: 1,
@@ -28,7 +29,16 @@ app.use(express.static('./client/dist'))
 
 
 app.get('/data', function(req, res) {
-  res.send(data);
+  // data from database:
+  db.getAllPlayers(function(err, players) {
+    if (err) {
+      console.log('didn\'t get players from db. Got: ', err)
+    } else {
+      res.send(players);
+    }
+  })
+  // data from server:
+  // res.send(data);
 });
 
 

@@ -6,8 +6,8 @@ USE mmm;
 
 CREATE TABLE players (
   id int NOT NULL AUTO_INCREMENT,
-  token string NOT NULL,
-  tokenImg string NOT NULL,
+  token varchar(20) NOT NULL,
+  tokenImg varchar(20) NOT NULL,
   balance int NOT NULL,
   PRIMARY KEY (id)
 );
