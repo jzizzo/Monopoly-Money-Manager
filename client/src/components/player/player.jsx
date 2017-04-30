@@ -5,7 +5,8 @@ class Player extends Component {
     super(props);
     this.state = {
       value: 'Transfer fund$',
-      balance: 1500
+      transfer: undefined,
+      showBalance: false
     }
     this.handleChange = this.handleChange.bind(this);
   }
@@ -24,18 +25,9 @@ class Player extends Component {
 
     return (
       <div>
-        <div onClick={() => (this.props.displayTransfer(this.props.playerId))}> Player: {this.props.playerId} <br /> Balance: {this.state.balance}
+        <div onClick={() => (this.props.displayBalance(this.props.playerId))}> Player: {this.props.playerId} <br />
         </div>
-          <button>bank</button>
-          <button>hat</button>
-          <button>trex</button>
-          <input
-          type="text"
-          value={ this.state.value }
-          onChange={ this.handleChange }
-          onFocus={ () => this.setState({value: ''}) }
-          onKeyPress={ (e) => this.handleKeyPress(e) }
-          />
+
       </div>
     )
   }

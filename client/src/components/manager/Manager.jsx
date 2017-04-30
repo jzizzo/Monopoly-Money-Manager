@@ -7,13 +7,12 @@ class Manager extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      players: ['hat', 'trex']
     }
-  this.displayTransfer = this.displayTransfer.bind(this);
+  this.displayBalance = this.displayBalance.bind(this);
   }
 
-  displayTransfer(player) {
-    console.log('hiii', player);
+  displayBalance(player) {
+    console.log('hiii', this.props.data, player);
   }
 
 
@@ -25,9 +24,9 @@ class Manager extends Component {
         <br />
 
 
-        <Player playerId='bank' displayTransfer={this.displayTransfer} />
-        <Player playerId='hat' displayTransfer={this.displayTransfer} />
-        <Player playerId='trex' displayTransfer={this.displayTransfer} />
+        <Player playerId='bank' displayBalance={this.displayBalance} />
+        <Player playerId='hat' displayBalance={this.displayBalance} />
+        <Player playerId='trex' displayBalance={this.displayBalance} />
       </div>
     )
   }

@@ -12,7 +12,7 @@ class App extends Component {
     return (
       <div>
         <Nav />
-        <Manager />
+        <Manager data={this.props.data}/>
       </div>
     )
   }
