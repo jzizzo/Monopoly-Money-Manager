@@ -26,9 +26,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static('./client/dist'))
 
-app.get('/balances', function(req, res) {
-  res.send('Hello World!');
+
+app.get('/data', function(req, res) {
+  res.send(data);
 });
+
 
 app.listen(1935, function () {
   console.log('Monopoly Money Manager listening on port 1935!')
