@@ -1,18 +1,18 @@
 var data = [{
   id: 1,
-  token: bank,
+  token: 'bank',
   tokenImg: 'bank',
   balance: 150000
   },
   {
   id: 2,
-  token: hat,
+  token: 'hat',
   tokenImg: 'hat',
   balance: 1500
   },
   {
-  id: 1,
-  token: trex,
+  id: 3,
+  token: 'trex',
   tokenImg: 'trex',
   balance: 1500
   },

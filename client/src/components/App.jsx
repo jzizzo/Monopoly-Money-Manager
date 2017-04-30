@@ -7,6 +7,8 @@ class App extends Component {
     super (props)
   }
 
+  // when attaching server, replace data passed to Manager with an ajax call to server to return
+
   render() {
 
     return (

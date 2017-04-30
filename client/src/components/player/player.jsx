@@ -25,7 +25,7 @@ class Player extends Component {
 
     return (
       <div>
-        <div onClick={() => (this.props.displayBalance(this.props.playerId))}> Player: {this.props.playerId} <br />
+        <div onClick={() => (this.props.displayBalance(this.props.playerId))}> Player: {this.props.player.id} Balance: ${this.props.player.balance} <br />
         </div>
 
       </div>

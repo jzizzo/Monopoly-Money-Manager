@@ -7,6 +7,7 @@ class Manager extends Component {
   constructor(props) {
     super(props);
     this.state = {
+
     }
   this.displayBalance = this.displayBalance.bind(this);
   }
@@ -15,7 +16,6 @@ class Manager extends Component {
     console.log('hiii', this.props.data, player);
   }
 
-
   render() {
     return (
       <div>This is where the manager will go
@@ -23,10 +23,10 @@ class Manager extends Component {
         <br />
         <br />
 
-
-        <Player playerId='bank' displayBalance={this.displayBalance} />
-        <Player playerId='hat' displayBalance={this.displayBalance} />
-        <Player playerId='trex' displayBalance={this.displayBalance} />
+        { this.props.data.map((playerData, key) => {
+          return <Player player={playerData} key={key} displayBalance={this.displayBalance} />
+        })
+      }
       </div>
     )
   }
