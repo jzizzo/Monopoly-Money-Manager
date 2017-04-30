@@ -12,14 +12,23 @@ var connection = mysql.createConnection({
 // start server again with: mysql -u root
 
 
-var getAllPlayers = function(callback) {
+module.exports.getAllPlayers = function(callback) {
   connection.query('SELECT * FROM players', function(err, results, fields) {
     if (err) {
-      callback(err, null)
+      callback(err, null);
     } else {
-      callback(null, results)
+      callback(null, results);
     }
   })
 }
 
-module.exports.getAllPlayers = getAllPlayers;
+module.exports.balanceTransfer = function(player, amount, callback) {
+  connection.query(`UPDATE players SET balance = ${amount} WHERE players.token = ${player}` , function(err, results, fields) {
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, results);
+    }
+  })
+
+}
