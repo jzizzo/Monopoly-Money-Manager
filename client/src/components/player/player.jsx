@@ -60,7 +60,7 @@ class Player extends Component {
            if (this.state.player !== currentPlayer.token) {
             return currentPlayer}}
              )
-          .map( (player, key) => { return <button onClick={() => (this.toggleTransferForm(player))}key={key}>{player.token}</button>})
+          .map( (player, key) => { return <button onClick={() => (this.toggleTransferForm(player))}key={key}><img src={ player.tokenImg} height="40" /><br />{player.token}</button>})
   }
 
   toggleTransferForm(player) {
@@ -82,7 +82,7 @@ class Player extends Component {
   render() {
     return (
       <div>
-        <div onClick={ this.toggleTransferOptions.bind(this) }> Player: { this.props.player.token }
+        <div onClick={ this.toggleTransferOptions.bind(this) }> Player: <img src={ this.props.player.tokenImg} height="80" />
         </div>
           <div> Balance: ${ this.props.player.balance }
           <br />

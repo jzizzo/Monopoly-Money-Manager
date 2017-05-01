@@ -67,7 +67,6 @@ app.put('/transfer', function(req, res) {
         data[index].balance = req.body[token];
       }
     })
-
     promises.push(dbPromise(token))
   }
   Promise.all(promises).then((values) => {
