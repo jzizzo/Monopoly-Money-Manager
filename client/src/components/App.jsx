@@ -9,6 +9,7 @@ class App extends Component {
     this.state = {
       data: []
     }
+    this.updateData = this.updateData.bind(this);
   }
 
   componentDidMount() {
@@ -20,14 +21,19 @@ class App extends Component {
     })
   }
 
+  updateData(data) {
+    console.log('fired')
+    this.setState(data: data);
+  }
+
   // when attaching server, replace data passed to Manager with an ajax call to server to return
 
   render() {
 
     return (
       <div>
-        <Nav />
-        <Manager data={this.state.data}/>
+        <Nav updateData={this.updateData}/>
+        <Manager data={this.state.data} updateData={this.updateData} />
       </div>
     )
   }
