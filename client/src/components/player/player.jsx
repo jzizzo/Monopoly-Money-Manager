@@ -29,7 +29,7 @@ class Player extends Component {
   }
 
   toggleTransferOptions() {
-    this.setState({showTransferOptions: !this.state.showTransferOptions})
+    this.setState({showTransferOptions: !this.state.showTransferOptions, showTransferForm: false})
   }
 
   displayTransferOptions() {
