@@ -5,14 +5,21 @@ class Player extends Component {
     super(props);
     this.state = {
       player: this.props.player.token,
-      value: 'Transfer fund$',
-      showTransferOptions: false
+      value: '',
+      showTransferOptions: false,
+      showTransferForm: false,
+      transferTo: undefined
     }
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event) {
     this.setState({value: event.target.value})
+    console.log(this.state.value);
+  }
+
+  handleSubmit() {
+
   }
 
   handleKeyPress(e) {
@@ -30,7 +37,17 @@ class Player extends Component {
            if (this.state.player !== currentPlayer.token) {
             return currentPlayer}}
              )
-          .map( (player, key) => { return <div onClick={this.someFnThatWillReturnInputForm}key={key}>{player.token}</div>})
+          .map( (player, key) => { return <button onClick={() => (this.toggleTransferForm(player))}key={key}>{player.token}</button>})
+  }
+
+  toggleTransferForm(player) {
+    this.setState({showTransferForm: !this.state.showTransferForm, transferTo: player.token})
+  }
+
+  displayTransferForm(player) {
+    console.log(this.state.transferTo)
+    return <input type="text" placeholder={`Transfer to ${this.state.transferTo}`} onChange={this.handleChange}/>
+
   }
 
   render() {
@@ -40,7 +57,9 @@ class Player extends Component {
         <div onClick={ this.toggleTransferOptions.bind(this) }> Player: { this.props.player.token }
         </div>
           <div> Balance: ${ this.props.player.balance }
-          { this.state.showTransferOptions ? this.displayTransferOptions() : null }
+          <br />
+          { this.state.showTransferOptions && this.displayTransferOptions() }
+          { this.state.showTransferForm &&  this.displayTransferForm()}
           </div>
           <br /> <br />
       </div>
