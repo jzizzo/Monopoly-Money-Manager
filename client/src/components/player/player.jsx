@@ -19,35 +19,27 @@ class Player extends Component {
 
   handleChange(event) {
     this.setState({transferAmount: event.target.value})
-    console.log(this.state.transferAmount);
   }
 
   sendRequest (dataObj) {
-    console.log('clicky')
     $.ajax({
       type: 'PUT',
       url: 'http://127.0.0.1:1935/transfer',
       data: dataObj,
-      success: (results) => { console.log(results); this.props.updateData(results) },
+      success: (results) => { this.props.updateData(results) },
       error: (err) => { console.log('ajax request to /transfer failed', err)}
     })
   }
 
-
-  handleSubmit() {
-
-  }
-
   handleKeyPress(e) {
     if(e.charCode == 13) {
-      console.log('state:', this.state, 'props:', this.props)
       this.sendRequest({[this.state.player]: Number(this.props.player.balance) - Number(this.state.transferAmount), [this.state.transferTo]: Number(this.state.transferToObj.balance) + Number(this.state.transferAmount)});
-      console.log('hiiii')
       alert(`Success! You sent ${this.state.transferAmount} to ${this.state.transferTo}`)
       this.setState({showTransferOptions: false,
       showTransferForm: false,
-      transferTo: undefined})
-
+      transferTo: undefined,
+      transferAmount: 0,
+      transferToObj: undefined})
     }
   }
 
@@ -57,27 +49,19 @@ class Player extends Component {
 
   displayTransferOptions() {
     return this.props.players.filter( (currentPlayer) => {
-           if (this.state.player !== currentPlayer.token) {
-            return currentPlayer}}
-             )
-          .map( (player, key) => { return <button onClick={() => (this.toggleTransferForm(player))}key={key}><img src={ player.tokenImg} height="40" /><br />{player.token}</button>})
+     if (this.state.player !== currentPlayer.token) {
+      return currentPlayer}} )
+    .map( (player, key) => { return <button onClick={() => (this.toggleTransferForm(player))}key={key}><img src={ player.tokenImg} height="40" /><br />{player.token}</button>})
   }
 
   toggleTransferForm(player) {
-    console.log(player)
     this.setState({showTransferForm: !this.state.showTransferForm, transferTo: player.token, transferToObj: player})
-
   }
 
   displayTransferForm(player) {
     return <input type="text" placeholder={`Transfer to ${this.state.transferTo}`} onChange={this.handleChange} onKeyPress={ (e) => this.handleKeyPress(e) } />
 
   }
-
-  pink () {
-    console.log(this.state)
-  }
-
 
   render() {
     return (
@@ -96,8 +80,3 @@ class Player extends Component {
 }
 
 export default Player;
-
-
-    // console.log('----###--', {[this.props.player.token]: this.props.player.balance - this.state.transferAmount, [this.state.transferTo]: this.state.transferToObj.balance + this.state.transferAmount
-    // })
-    // console.log('fuckkkllkkkkkkmylife', , this.state.transferToObj.balance + this.state.transferAmounmt)

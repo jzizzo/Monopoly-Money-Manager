@@ -21,17 +21,6 @@ module.exports.getAllPlayers = function(callback) {
   })
 }
 
-// module.exports.updateBalance = function(player, amount, callback) {
-//   connection.query(`UPDATE players SET balance = ${amount} WHERE players.token = ${player}` , function(err, results, fields) {
-//     if (err) {
-//       callback(err, null);
-//     } else {
-//       callback(null, results);
-//     }
-//   })
-
-// }
-
 module.exports.updateBalance = function(token, amount) {
   return new Promise ((resolve, reject) => {
     return connection.query(`UPDATE players SET balance = ${amount} WHERE players.token = ${token}` , function(err, results, fields) {
