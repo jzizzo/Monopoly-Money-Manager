@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
+import $ from 'jquery'
+
 
 class Player extends Component {
   constructor(props) {
     super(props);
     this.state = {
       player: this.props.player.token,
-      value: '',
+      value: 0,
       showTransferOptions: false,
       showTransferForm: false,
-      transferTo: undefined
+      transferTo: undefined,
+      transferAmount: 0
     }
     this.handleChange = this.handleChange.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   handleChange(event) {
@@ -18,13 +22,30 @@ class Player extends Component {
     console.log(this.state.value);
   }
 
+  sendRequest (transferObj) {
+    console.log('clicky')
+    $.ajax({
+      type: 'PUT',
+      url: 'http://127.0.0.1:1935/transfer',
+      data: transferObj,
+      success: (results) => { console.log(results); this.props.updateData(results) },
+      error: (err) => { console.log('ajax request to /transfer failed', err)}
+    })
+  }
+
   handleSubmit() {
 
   }
 
   handleKeyPress(e) {
-    if(event.charCode == 13) {
+    if(e.charCode == 13) {
+      this.sendRequest();
       console.log('hiiii')
+      alert(`Success! You sent ${this.state.value} to ${this.state.transferTo}`)
+      this.setState({showTransferOptions: false,
+      showTransferForm: false,
+      transferTo: undefined})
+
     }
   }
 
@@ -46,7 +67,7 @@ class Player extends Component {
 
   displayTransferForm(player) {
     console.log(this.state.transferTo)
-    return <input type="text" placeholder={`Transfer to ${this.state.transferTo}`} onChange={this.handleChange}/>
+    return <input type="text" placeholder={`Transfer to ${this.state.transferTo}`} onChange={this.handleChange} onKeyPress={ (e) => this.handleKeyPress(e) } />
 
   }
 

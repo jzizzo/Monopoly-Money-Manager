@@ -21,7 +21,7 @@ class Manager extends Component {
         <br />
 
         { this.props.data.map((playerData, key) => {
-          return <Player player={playerData} players={this.props.data} key={key} />
+          return <Player player={playerData} players={this.props.data} key={key} updateData={this.props.updateData}/>
         })
       }
       </div>
