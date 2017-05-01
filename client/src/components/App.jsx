@@ -21,9 +21,8 @@ class App extends Component {
     })
   }
 
-  updateData(data) {
-    console.log('fired')
-    this.setState(data: data);
+  updateData(newData) {
+    this.setState({data: newData});
   }
 
   // when attaching server, replace data passed to Manager with an ajax call to server to return

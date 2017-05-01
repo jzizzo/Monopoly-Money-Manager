@@ -46,7 +46,6 @@ app.get('/data', function(req, res) {
   // res.send(data);
 });
 
-
 app.put('/transfer', function(req, res) {
 
   var promises = []
@@ -55,7 +54,7 @@ app.put('/transfer', function(req, res) {
       db.updateBalance(JSON.stringify(token), req.body[token])
       .then((response) => {
         resolve()
-    })
+      })
     })
   }
 
@@ -87,7 +86,7 @@ app.put('/transfer', function(req, res) {
 //         data.forEach(function(datum, index) {
 //           console.log(index)
 //           if (datum.token === token) {
-//             data[index].balance = req[token];
+//             data[index].balance = req.body[token];
 //           }
 //         })
 //       }

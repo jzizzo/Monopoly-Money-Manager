@@ -15,9 +15,8 @@ class Nav extends Component {
       url: 'http://127.0.0.1:1935/transfer',
       data: {trex: 1000, hat: 2000},
       success: (results) => { console.log(results); this.props.updateData(results) },
-      error: (err) => { console.log('crap')}
+      error: (err) => { console.log('ajax request to /transfer failed', err)}
     })
-
   }
 
   render() {
