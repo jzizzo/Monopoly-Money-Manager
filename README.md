@@ -1,2 +1,2 @@
-#mvp
-This is a project I completed as a student at [hackreactor](http://hackreactor.com). This project was worked on with a pair.
+#Monopoloy Money Manager
+This is a personal project I completed as a student at [hackreactor](http://hackreactor.com).
